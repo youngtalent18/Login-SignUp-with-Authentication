@@ -1,0 +1,219 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url("../images/download.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Verdana;
+    padding: 30px 10%;
+}
+
+header h2{
+    color: white;
+    margin-right: auto;
+}
+
+.nav-links {
+    list-style-type: none;
+}
+
+.nav-links li {
+    display: inline-block;
+    justify-content: space-between;
+}
+
+li,a {
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #cdf0f1;
+    padding: 8px;
+    font-family: Verdana;
+}
+
+.nav-links li a {
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    transition: all 0.3s ease;
+    color: rgba(0,136,169,1);
+}
+
+span {
+    color: rgba(0,136,169,1);
+}
+
+
+button {
+    border: none;
+    padding: 10px;
+    border-radius: 50px;
+    color: white;
+    background-color: rgba(0,136,169,1);
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+button:hover {
+    background-color: hsl(20, 100%, 99%);
+    color: rgba(0,136,169,1);
+    transform: scale(1.0);
+    cursor: pointer;
+}
+
+.service {
+    background: transparent;
+    width: 100%;
+    padding: 8px;
+    margin-top: 0;
+}
+
+.title h2{
+    color: #cdf0f1;
+    font-size: 30px;
+    margin-top: 2px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+.card {
+    max-height: 500px;
+    padding: 20px 30px;
+    width: 335px;
+    margin: 10px;
+    border: 0.5px solid #cdf0f1;
+    background: transparent;
+    border-radius: 20px;
+    position: relative;
+    text-overflow: ellipsis;
+    text-align: center;
+
+}
+.card i {
+    font-size: 30px;
+    display: block;
+    text-align: center;
+    margin: 15px 0;
+    color: rgba(0, 136, 169,1);
+}
+
+h5 {
+    color: #cdf0f1;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.pra p{
+    color: #cdf0f1;
+    line-height: 25px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.card .button {
+    color: #cdf0f1;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: .4s;
+    padding: 10px 30px;
+    background-color: rgba(0,136,169,1);
+    font-weight: bold;
+    cursor: pointer;
+}
+.card .button:hover {
+    cursor: pointer;
+    background-color: #cdf0f1;
+    color: rgba(0,136,169,1);
+}
+
+
+
+/* ---------- Mobile Responsive Styles ---------- */
+@media only screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links li {
+    display: block;
+  }
+
+  li, a {
+    font-size: 14px;
+  }
+
+  .box {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .card {
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .card i {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  .pra p {
+    font-size: 15px;
+    line-height: 1.6rem;
+  }
+
+  .card .button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .title h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+
+
+
+
+

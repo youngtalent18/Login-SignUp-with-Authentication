@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+          integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<body>
+        <header class="container">
+            <h1>Admin <span>panel</span></h1>
+                <nav>
+                    <ul class="admin-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/contact">contact</a></li>
+                        <li><a href="/services">services</a></li>
+                    </ul>
+                </nav>
+        </header>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div id="flashed" class="flashed">
+                {% for message in messages %}
+                    <p style="color: #cdf0f1;">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+        <div class="bts">
+            <a style="color: blue;" href="/logout"><button >log-out</button></a>
+            <a style="color: blue;" href="/delete-all"><button class="del" >del--all</button></a>
+        </div>
+
+
+        <div class="bt">
+            {% for msg in messages %}
+            <div class="msg">
+                <strong class="name">Name:</strong>{{ msg[1] }}<br>
+                <strong>Email:</strong>{{ msg[2] }}<br>
+                <strong>Message:</strong>{{ msg[3] }}<br>
+                <a href="/delete/{{ msg[0] }}">
+                    <button class="danger">Delete</button>
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+    <script>
+        setTimeout(function() {
+            const msg = document.getElementById("flashed");
+            if (msg) {
+                msg.style.transition = "opacity 0.5s ease";
+                msg.style.opacity = 0;
+                setTimeout(() => msg.remove(), 500);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

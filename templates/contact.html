@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Contact</title>
+        <link rel="icon" href="{{url_for('static', filename='images/favicon.ico')}}" type="image/x-icon">
+    </head>
+    <body>
+        <header class="container">
+
+        <h2>Con<span>tact</span></h2>
+          <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+          </nav>
+          <a class="cta" href="/services"><button>Services</button></a>
+        </header>
+
+        <div class="con">
+            <h3>Contact Me</h3>
+        <p>Feel free to reach me out on collaboration,<br>or ask questions or even just a simple 👋Hi</p>
+        </div>
+        <div id="flash" class="flash">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for msg in messages %}
+                        <p> {{ messages[0] }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+
+        <div class="animated-arrow"></div>
+
+        <form class="form-group" method="post" action="/contact">
+
+            <input type="text" name="name" placeholder="Your name goes here" required ><label class="lab1">Name</label><br><br>
+            <input type="email" name="email" placeholder="Your email goes here" required><label class="lab2" >Email</label><br><br>
+            <textarea name="message" placeholder="Your message goes here" maxlength="220" rows="6"></textarea><label class="lab3">Message</label>
+            <button class="btn" type="submit">Send</button>
+        </form>
+
+         <script>
+            setTimeout(function() {
+                const msg = document.getElementById("flash");
+                if (msg) {
+                    msg.style.transition = "opacity 0.5s ease";
+                    msg.style.opacity = 0;
+                    setTimeout(() => msg.remove(), 500);
+                }
+            }, 2000);
+        </script>
+    </body>
+
+</html>
