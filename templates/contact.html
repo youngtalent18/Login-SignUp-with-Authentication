@@ -11,44 +11,67 @@
     </head>
     <body>
         <header class="container">
-
-        <h2>Con<span>tact</span></h2>
-          <nav>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-          </nav>
-          <a class="cta" href="/services"><button>Services</button></a>
+            <h2>Con<span>tact</span></h2>
+              <nav>
+                <ul id="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a class="active" href="/contact">Contact</a></li>
+                    <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+                </ul>
+              </nav>
+                <div class="mobile">
+                    <a class="cta" href="/services"><i class="fas fa-sliders"></i></a>
+                    <i id="bar" class="fa-solid fa-outdent"></i>
+                </div>
         </header>
 
-        <div class="con">
-            <h3>Contact Me</h3>
-        <p>Feel free to reach me out on collaboration,<br>or ask questions or even just a simple 👋Hi</p>
+        <div class="super-con">
+            <div class="con">
+                <h3>Contact Me</h3>
+                <p>Feel free to reach me out on collaboration,<br>or ask questions or even just a simple 👋Hi</p>
+            </div>
+            <div id="flash" class="flash">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for msg in messages %}
+                            <p> {{ messages[0] }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+
+            <div class="animated-arrow"></div>
+
+            <form class="form-group" method="post" action="/contact">
+                <input type="text" name="name" placeholder="Your name goes here" required ><label class="lab1">Name</label><br><br>
+                <input type="email" name="email" placeholder="Your email goes here" required><label class="lab2" >Email</label><br><br>
+                <textarea name="message" placeholder="Your message goes here" maxlength="220" rows="6"></textarea><label class="lab3">Message</label>
+                <button class="btn" type="submit">Send</button>
+            </form>
         </div>
-        <div id="flash" class="flash">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for msg in messages %}
-                        <p> {{ messages[0] }}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-        </div>
-
-
-        <div class="animated-arrow"></div>
-
-        <form class="form-group" method="post" action="/contact">
-
-            <input type="text" name="name" placeholder="Your name goes here" required ><label class="lab1">Name</label><br><br>
-            <input type="email" name="email" placeholder="Your email goes here" required><label class="lab2" >Email</label><br><br>
-            <textarea name="message" placeholder="Your message goes here" maxlength="220" rows="6"></textarea><label class="lab3">Message</label>
-            <button class="btn" type="submit">Send</button>
-        </form>
 
          <script>
+            const bar = document.getElementById('bar');
+            const nav = document.getElementById('nav-links');
+            const close = document.getElementById('close');
+
+            if(bar) {
+                bar.addEventListener('click', () => {
+                    nav.classList.add('active');
+                });
+            }
+
+            if(close) {
+                close.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                });
+            }
+
+
             setTimeout(function() {
                 const msg = document.getElementById("flash");
                 if (msg) {

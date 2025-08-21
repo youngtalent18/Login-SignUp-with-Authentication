@@ -26,11 +26,11 @@ header h2{
     margin-right: auto;
 }
 
-.nav-links {
+#nav-links {
     list-style-type: none;
 }
 
-.nav-links li {
+#nav-links li {
     display: inline-block;
     justify-content: space-between;
 }
@@ -44,11 +44,11 @@ li,a {
     font-family: Verdana;
 }
 
-.nav-links li a {
+#nav-links li a {
     transition: all 0.3s ease;
 }
 
-.nav-links li a:hover {
+#nav-links li a:hover {
     transition: all 0.3s ease;
     color: rgba(0,136,169,1);
 }
@@ -208,89 +208,205 @@ textarea {
   }
 }
 
-/* ---------- Mobile Responsive Styles ---------- */
-@media only screen and (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
-  }
-  .flash p {
-    color: #cdf0f1;
-    left: 30%;
-    top: 45%;
-    position: absolute;
-  }
-
-
-  .form-group {
-    width: 90%;
-    margin: 20px auto;
-    padding: 15px;
-    max-width: none;
-    border-radius: 10px;
-  }
-
-  .lab1, .lab2, .lab3 {
-    position: static;
-    display: block;
-    width: fit-content;
-    margin: 10px auto;
-    font-size: 13px;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  .con h3 {
-    position: static;
-    margin: 20px auto;
-    text-align: center;
-    transform: none;
-  }
-
-  .animated-arrow {
+.mobile {
     display: none;
-  }
+    align-items: center;
+}
+#close {
+    display: none;
+    align-items: center;
+}
+#nav-links li a{
+    position: relative;
+}
+#nav-links li a:hover,
+#nav-links li a.active{
+    color: rgba(0,136,169,1);
+}
 
-  .animated-arrow::before {
-    font-size: 40px;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) rotate(-45deg);
-  }
-
-  .btn {
-    font-size: 16px;
-    padding: 12px;
-    border-radius: 10px;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .nav-links li {
-    display: block;
-  }
-
-  li, a {
-    font-size: 14px;
-  }
+#nav-links li a.active::after,
+#nav-links li a:hover::after{
+    content: "";
+    width: 40%;
+    height: 2px;
+    position: absolute;
+    background: rgba(0,136,169,1);
+    bottom: 5px;
+    left: 10px;
 }
 
 
+@media screen and (max-width: 800px) {
+    header {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
 
+    #nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        right: -300px;
+        padding: 80px 0 0 10px;
+        width: 300px;
+        background-color: hsl(0, 0%, 6%);
+        transition: 0.3s;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    #nav-links.active{
+        right: 0;
+    }
+    #navbar li {
+        padding: 0 25px;
+        font-size: 15px;
+        margin-bottom: 26px;
+    }
 
+    .mobile {
+        display: flex;
+        align-items: center;
+        color: #fff
+    }
 
+    #close {
+        display: initial;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+    }
+    .cta{
+        font-size: 20px;
+        padding-left: 10px;
+    }
+    #bar {
+        font-size: 20px;
+        padding-left: 10px;
+    }
+    .flash p {
+        color: #cdf0f1;
+        left: 30%;
+        top: 45%;
+        position: absolute;
+      }
+    .super-con{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-group {
+        width: 95%;
+        margin-top: 15%;
+        padding: 15px;
+        min-height: 50vh;
+        min-width: 60vw;
+        position: static;
+        border-radius: 10px;
+    }
+    .animated-arrow {
+        position: relative;
+        left: -45%;
+    }
+    .animated-arrow::before {
+        position: absolute;
+        top: 40px;
+        transform: rotate(210deg);
+    }
+    .con {
+        font-size: 20px;
+    }
+    .con h3 {
+        margin-left: 15%;
+        transform: translateY(90px);
+    }
+    .lab1, .lab2, .lab3 {
+        position: static;
+        display: block;
+        width: fit-content;
+        margin: 10px auto;
+        font-size: 13px;
+      }
+    input,
+    textarea {
+        outline: none;
+        width: 100%;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
+/* --- Existing CSS kept as is --- */
 
+/* Add a new breakpoint for ultra-small screens */
+@media screen and (max-width: 500px) {
+    header {
+        padding: 20px 5%;
+    }
+
+    .form-group {
+        width: 90%;
+        padding: 10px;
+        min-height: auto;   /* let it shrink naturally */
+        min-width: auto;    /* remove min-width restriction */
+        border-radius: 8px;
+        margin-top: 10%;
+    }
+
+    .con {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .con h3 {
+        font-size: 16px;
+        margin-left: 0;
+        position: static;
+        transform: none;
+        text-align: center;
+    }
+
+    .lab1, .lab2, .lab3 {
+        font-size: 11px;
+        padding: 6px 10px;
+        margin: 6px auto;
+    }
+
+    input,
+    textarea {
+        font-size: 14px;
+        padding: 8px;
+        margin-bottom: 6px;
+    }
+
+    .animated-arrow {
+        font-size: 40px;
+        left: 0;
+    }
+
+    .animated-arrow::before {
+        font-size: 40px;
+        top: 10px;
+    }
+
+    .flash p {
+        font-size: 12px;
+        left: 20%;
+        top: 40%;
+    }
+
+    button, .btn {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    #nav-links {
+        width: 240px;
+        padding: 60px 0 0 10px;
+    }
+}
 

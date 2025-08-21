@@ -14,34 +14,45 @@
 <body>
       <header class="container">
 
-        <h2>Home<span>Page</span></h2>
-          <nav>
-            <ul class="nav-links">
-                <li><a href="/admin-login">Admin</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-          </nav>
-          <a class="cta" href="/contact"><button>Contact</button></a>
+            <h2>Home<span>Page</span></h2>
+              <nav>
+                  <ul id="navbar">
+                        <li><a class="active" href="/">Home</a></li>
+                        <li><a href="/admin-login">Admin</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/projects">Projects</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+
+                        <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+                  </ul>
+              </nav>
+
+              <div class="mobile">
+                  <a class="cta" href="/contact"><i class="fas fa-mobile"></i></a>
+                  <i id="bar" class="fas fa-outdent" ></i>
+              </div>
       </header>
 
-    <div class="info">
-        <h4>I am Code<span>CRAZE</span></h4><br>
-        <h2>Aspiring Web Developer | AI Engineer in the Making</h2><br>
-        <h6>I'm a passionate dev learner, constantly exploring and building.<br>
-            With a strong drive to dive into AI, I'm on a mission<br> to turn creativity into code.</h6><br>
-        <h5>#Code.  Create.  Evolve</h5>
+    <div class="div">
+        <div class="image">
+              <img src="static/images/best.jpg" height="auto"  alt="my_profile_photo" class="me">
+        </div>
+
+        <div class="info">
+            <h4>I am Code<span>CRAZE</span></h4><br>
+            <h2>Aspiring Web Developer | AI Engineer in the Making</h2><br>
+            <h6>I'm a passionate dev learner, constantly exploring and building.<br>
+                With a strong drive to dive into AI, I'm on a mission<br> to turn creativity into code.</h6><br>
+            <h5>#Code.  Create.  Evolve</h5>
+        </div>
+
+          <div class="icons">
+              <a id="three" href="https://wa.me/+233554373790" target="_blank"><i id="one" class="fab fa-whatsapp"></i></a>
+              <a id="four" href="https://youtube.com/@youngTarget20" target="_blank"><i id="two" class="fab fa-youtube"></i></a>
+          </div>
     </div>
 
-      <div class="image">
-          <img src="static/images/best.jpg" height="auto" width=200px alt="my_profile_photo" class="me">
-      </div>
-
-      <div class="icons">
-          <a id="three" href="https://wa.me/+233554373790" target="_blank"><i id="one" class="fab fa-whatsapp"></i>WhatsApp</a>
-          <a id="four" href="https://youtube.com/@youngTarget20" target="_blank"><i id="two" class="fab fa-youtube"></i>Youtube</a>
-      </div>
-
 </body>
+        <script src="{{ url_for('static', filename='js/mySite.js') }}"></script>
 </html>

@@ -13,13 +13,18 @@
         <header class="container">
             <h2>About<span> Me</span></h2>
           <nav>
-            <ul class="nav-links">
+            <ul id="navbar">
                 <li><a href="/">Home</a></li>
                 <li><a href="/services">Services</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li><a class="active" href="/about">About</a></li>
+                <a href="# " id="close"><i class="fa-solid fa-xmark"></i></a>
             </ul>
           </nav>
-            <a class="cta" href="/projects"><button>Projects</button></a>
+            <div class="mobile">
+                <a class="cta" href="/projects"><i class="fas fa-map"></i></a>
+                <i id="bar" class="fa-solid fa-outdent"></i>
+            </div>
          </header>
 
         <section class="about">
@@ -62,6 +67,6 @@
                </div>
            </div>
        </section>
-
     </body>
+    <script src="{{ url_for('static', filename='js/mySite.js') }}"></script>
 </html>

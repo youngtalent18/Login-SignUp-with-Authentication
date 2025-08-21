@@ -11,17 +11,22 @@
     </head>
     <body>
         <header class="container">
-
-        <h2>My Ser<span>Vices</span></h2>
-          <nav>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-          </nav>
-          <a class="cta" href="/about"><button>About</button></a>
-      </header>
+            <h2>My Ser<span>Vices</span></h2>
+              <nav>
+                <ul id="navbar">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a class="active" href="/services">Services</a></li>
+                    <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+                </ul>
+              </nav>
+                <div class="mobile">
+                    <a class="cta" href="/about"><i class="fas fa-user"></i></a>
+                    <i id="bar" class="fas fa-outdent"></i>
+                </div>
+        </header>
 
         <div class="service">
             <div class="title">
@@ -68,4 +73,5 @@
 
 
     </body>
+    <script src="{{ url_for('static', filename='js/mySite.js') }}"></script>
 </html>
