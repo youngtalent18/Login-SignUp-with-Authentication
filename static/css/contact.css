@@ -310,13 +310,10 @@ textarea {
         border-radius: 10px;
     }
     .animated-arrow {
-        position: relative;
-        left: -45%;
+        display: none;
     }
     .animated-arrow::before {
-        position: absolute;
-        top: 40px;
-        transform: rotate(210deg);
+        display: none;
     }
     .con {
         font-size: 20px;
