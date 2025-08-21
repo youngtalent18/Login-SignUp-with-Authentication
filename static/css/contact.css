@@ -381,13 +381,11 @@ textarea {
     }
 
     .animated-arrow {
-        font-size: 40px;
-        left: 0;
+        display: none;
     }
 
     .animated-arrow::before {
-        font-size: 40px;
-        top: 10px;
+        display: none;
     }
 
     .flash p {
