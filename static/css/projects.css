@@ -162,8 +162,9 @@ span {
 
     .mobile {
         display: flex;
+        align-items: center;
         color: #fff;
-        font-size: 22px;
+        font-size: 24px;
         cursor: pointer;
     }
 
