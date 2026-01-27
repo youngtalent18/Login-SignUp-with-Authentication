@@ -1,19 +1,29 @@
 import React, { useState } from 'react'
 import api from '../api/axios';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
   const [ username, setUsername ] = useState("");
   const [ password, setPassword ] = useState("");
   const [ email, setEmail ] = useState("");
   const [ fullname, setFullname ] = useState("");
+  const [ isSubmitting, setIsSubmitting ] = useState(false);
 
   const navigate = useNavigate();
 
+  const validateform = () =>{
+    if(!username || !password || !email || !fullname){
+      toast.error("All fields are required");
+      return false;
+    }
+    return true;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsSubmitting(true);
+    validateform();
     try{
       const res = await api.post("/auth/signup",{ 
         username, 
@@ -22,10 +32,15 @@ const SignUp = () => {
         fullname
       });
       console.log("User registered", res.data);
+      setEmail("");
+      setPassword("");
+      setUsername("");
+      setFullname("");
       navigate("/login");
-      toast.success("Registered successfully");
     }catch(error){
       console.log("Error", error.message);
+    }finally{
+      setIsSubmitting(false);
     }
   }
 
@@ -36,7 +51,7 @@ const SignUp = () => {
             <h3>Register</h3>
             <div className="form">
               <label htmlFor="">Fullname:  <br/>
-                <input type="text" value={fullname} onChange={(e)=>setFullname(e.target.value)}/>
+                <input type="text" value={fullname} onChange={(e)=>setFullname(e.target.value)} />
               </label>
 
               <label htmlFor="">Email:  <br/>
@@ -51,7 +66,7 @@ const SignUp = () => {
                 <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)}/>
               </label>
             </div>
-            <button onClick={(e)=>handleSubmit(e)}>Submit</button>
+            <button className='btn' disabled={isSubmitting} onClick={(e)=>handleSubmit(e)}>{isSubmitting ? "Loading..." : "Submit"}</button>
             <p>Already have an account? <a href="/login">Login</a></p>
           </div>
       </div>
