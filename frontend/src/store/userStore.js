@@ -23,19 +23,15 @@ export default create((set)=>({
             const res = await axios.get("/auth/me");
             set({user: res.data, loading: false});
         } catch (error) {
+            set({loading: false});
             const message = error.response.data.error || "An error occurred";
             toast.error(message);
         }
     },
-    signup: async ({name, email, password, confirmPassword}) => {
-        set({laoding: true});
-
-        if(password !== confirmPassword){
-            set({ loading: false});
-            return toast.error("Password mismatch");
-        }
+    signup: async ({fullname, email, password, username}) => {
+        set({loading: true});
         try {
-            const res = await axios.post("/auth/signup",{name, email, password});
+            const res = await axios.post("/auth/signup",{fullname, email, password, username});
             set({user: res.data, loading: false});
         } catch (error) {
             set({loading: false});

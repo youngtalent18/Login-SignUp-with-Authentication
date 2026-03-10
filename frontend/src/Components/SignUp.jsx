@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import api from '../api/axios';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
+import userStore from '../store/userStore.js';
 import toast from 'react-hot-toast';
 
 const SignUp = () => {
@@ -8,10 +7,9 @@ const SignUp = () => {
   const [ password, setPassword ] = useState("");
   const [ email, setEmail ] = useState("");
   const [ fullname, setFullname ] = useState("");
-  const [ isSubmitting, setIsSubmitting ] = useState(false);
+ 
 
-  const navigate = useNavigate();
-
+  const { signup,loading } = userStore();
   const validateform = () =>{
     if(!username || !password || !email || !fullname){
       toast.error("All fields are required");
@@ -22,26 +20,10 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    validateform();
-    try{
-      const res = await api.post("/auth/signup",{ 
-        username, 
-        password, 
-        email, 
-        fullname
-      });
-      console.log("User registered", res.data);
-      setEmail("");
-      setPassword("");
-      setUsername("");
-      setFullname("");
-      navigate("/login");
-    }catch(error){
-      console.log("Error", error.message);
-    }finally{
-      setIsSubmitting(false);
-    }
+    
+    if(!validateform()) return;
+
+    signup({username, password, email, fullname});
   }
 
   return (
@@ -66,7 +48,7 @@ const SignUp = () => {
                 <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)}/>
               </label>
             </div>
-            <button className='btn' disabled={isSubmitting} onClick={(e)=>handleSubmit(e)}>{isSubmitting ? "Loading..." : "Submit"}</button>
+            <button className='btn' disabled={loading} onClick={(e)=>handleSubmit(e)}>{loading ? "Loading..." : "Submit"}</button>
             <p>Already have an account? <a href="/login">Login</a></p>
           </div>
       </div>

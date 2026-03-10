@@ -1,32 +1,15 @@
-import React from 'react'
-import api from '../api/axios';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
-
+import userStore from "../store/userStore";
+import React from "react";
 const Login = () => {
 
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [ isSubmitting, setIsSubmitting ] = React.useState(false);
-  const navigate = useNavigate();
+  const { login, loading } = userStore();
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const res = await api.post("/auth/login", { username, password });
-      console.log("User logged in", res.data);
-      setUsername("");
-      setPassword("");
-      navigate("/");
-    } catch (error) {
-      console.log("Error", error.message);
-      toast.error("Invalid credentials");
-    }finally{
-      setIsSubmitting(false);
-    }
+    login({username, password});
   }
 
   return (
@@ -43,7 +26,7 @@ const Login = () => {
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
               </label>
             </div>
-            <button onClick={(e) => handleSubmit(e)} className='btn' disabled={isSubmitting}>{isSubmitting ? "Logging in..." : "Login"}</button>
+            <button onClick={(e) => handleSubmit(e)} className='btn' disabled={loading}>{loading ? "Logging in..." : "Login"}</button>
             <p>Don't have an account? <a href="/signup">signup</a></p>
           </div>
       </div>
